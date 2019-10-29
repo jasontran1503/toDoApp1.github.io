@@ -1,0 +1,16 @@
+<div class="d-flex justify-content-center">
+    <input type="text" placeholder="Input here" [(ngModel)]="itemContent" (keyup.enter)="addItem();">
+    <button type="button" class="btn btn-primary ml-3" (click)='addItem();' [disabled]="itemContent == ''">
+        <i class="fa fa-plus" aria-hidden="true"></i>
+    </button>
+</div>
+<div class="container mt-3">
+    <ul *ngFor="let item of arrItems" class="list-group">
+        <li class="list-group-item mb-3" (click)="changeStatus(item.id);" [class.success]="item.status">
+            {{ item.itemContent }} {{ item.status ? '(completed)' : '' }}
+            <button class="btn btn-danger" style="float: right;" (click)='removeItem(item.id);'>
+                <i class="fa fa-trash" aria-hidden="true"></i>
+            </button>
+        </li>
+    </ul>
+</div>
